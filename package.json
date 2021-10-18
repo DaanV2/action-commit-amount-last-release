@@ -1,0 +1,33 @@
+{
+  "name": "action-has-changed",
+  "version": "1.0.0",
+  "description": "The github action ",
+  "main": "out/action.js",
+  "scripts": {
+    "build": "tsc && ncc build -m",
+    "format": "prettier --write '**/*.ts'",
+    "format-check": "prettier --check '**/*.ts'",
+    "lint": "eslint src/**/*.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preversion": "",
+    "postversion": "git push && git push --tags",
+    "version": "git add -A source"
+  },
+  "keywords": [
+    "github",
+    "action",
+    "changes",
+    "utillituy"
+  ],
+  "author": "DaanV2",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.6.0",
+    "@actions/github": "^5.0.0",
+    "@vercel/ncc": "^0.31.1"
+  },
+  "devDependencies": {
+    "@types/node": "^16.10.9",
+    "typescript": "^4.4.4"
+  }
+}

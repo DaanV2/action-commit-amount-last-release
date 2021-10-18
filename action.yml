@@ -1,0 +1,13 @@
+name: 'Markdown action: create indexes'
+description: 'Creates indexes pages for a markdown styled wiki'
+branding:
+  icon: activity
+  color: green
+inputs:
+  token:
+    description: A github token to use
+    required: false    
+    default: "${{ github.token }}"
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
