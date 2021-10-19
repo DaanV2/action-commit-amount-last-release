@@ -27,7 +27,14 @@ export class Checker {
 
       console.log(`looking up for tag: ${tag} => date: ${date_value}`);
 
-      return this.octokit.rest.repos.listCommits(github.context.repo).then(commit_response => {
+      const request = {
+        owner: github.context.repo.owner,
+        repo: github.context.repo.repo,
+        unitl: date,
+        per_page: 100
+      }
+
+      return this.octokit.rest.repos.listCommits(request).then(commit_response => {
         console.log("reading commits");
 
         for (let I = 0; I < commit_response.data.length; I++) {
@@ -43,6 +50,9 @@ export class Checker {
             }
           }
         }
+
+        //Process all possible commits
+        core.setOutput("amount", commit_response.data.length);
       });
     });
   }
