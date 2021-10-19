@@ -25,7 +25,7 @@ export class Checker {
       const date = repo_response.data.published_at;
       const date_value = Date.parse(date);
 
-      console.log(`looking up for tag: ${tag} => date: ${date}`);
+      console.log(`looking up for tag: ${tag}`);
 
       const request = {
         owner: github.context.repo.owner,
