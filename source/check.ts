@@ -12,6 +12,7 @@ export class Checker {
   }
 
   check(): Promise<void> {
+    console.log("grabbing repo information");
     const latestRelease = this.octokit.rest.repos.getLatestRelease(github.context.repo);
 
     latestRelease.catch(err => {
@@ -24,16 +25,19 @@ export class Checker {
       const date = repo_response.data.published_at;
       const date_value = Date.parse(date);
 
-      console.log(`looking up for tag: ${tag}`);
+      console.log(`looking up for tag: ${tag} => date: ${date_value}`);
 
       return this.octokit.rest.repos.listCommits(github.context.repo).then(commit_response => {
+        console.log("reading commits");
+
         for (let I = 0; I < commit_response.data.length; I++) {
           const commit = commit_response.data[I];
           const commit_date = commit.commit.author.date;
 
           if (commit_date) {
+            console.log(`${commit.sha}=${commit_date}`);
             const commit_date_value = Date.parse(date);
-            
+
             if (commit_date_value < date_value) {
               core.setOutput("amount", I);
             }
