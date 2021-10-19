@@ -25,7 +25,7 @@ export class Checker {
       const date = repo_response.data.published_at;
       const date_value = Date.parse(date);
 
-      console.log(`looking up for tag: ${tag} => date: ${date_value}`);
+      console.log(`looking up for tag: ${tag} => date: ${date}`);
 
       const request = {
         owner: github.context.repo.owner,
@@ -43,7 +43,7 @@ export class Checker {
 
           if (commit_date) {
             const commit_date_value = Date.parse(date);
-            console.log(`${commit.sha}=${commit_date_value}`);
+            console.log(`${commit.sha}=${commit_date}`);
 
             if (commit_date_value < date_value) {
               core.setOutput("amount", I);
