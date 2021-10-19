@@ -1,7 +1,5 @@
-import * as fs from 'fs';
 import { Checker } from './check';
 import * as core from '@actions/core'
-import * as github from '@actions/github'
 
 //Start code
 try {
