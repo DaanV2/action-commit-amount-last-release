@@ -1,6 +1,6 @@
 {
   "name": "action-commit-amount-last-release",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "This action returns the amount of commits made since the last release",
   "main": "dist/index.js",
   "scripts": {
