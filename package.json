@@ -8,10 +8,12 @@
     "format": "prettier --write '**/*.ts'",
     "format-check": "prettier --check '**/*.ts'",
     "lint": "eslint src/**/*.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "preversion": "",
     "postversion": "git push && git push --tags",
-    "version": "git add -A source"
+    "version": "git add -A source",
+    "test": "mocha --debug-brk",
+    "clean": "rimraf lib",
+    "pretest": "npm run build"
   },
   "keywords": [
     "github",
@@ -27,7 +29,13 @@
     "@vercel/ncc": "^0.31.1"
   },
   "devDependencies": {
-    "@types/node": "^16.10.9",
+    "@types/chai": "^4.2.22",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.11.1",
+    "chai": "^4.3.4",
+    "mocha": "^9.1.3",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.3.0",
     "typescript": "^4.4.4"
   }
 }
