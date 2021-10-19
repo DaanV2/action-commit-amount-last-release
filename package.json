@@ -4,7 +4,7 @@
   "description": "This action returns the amount of commits made since the last release",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc && ncc build -m",
+    "build": "tsc && ncc build ./out/action.js -m",
     "format": "prettier --write '**/*.ts'",
     "format-check": "prettier --check '**/*.ts'",
     "lint": "eslint src/**/*.ts",
