@@ -1,8 +1,8 @@
 {
-  "name": "action-has-changed",
+  "name": "action-commit-amount-last-release",
   "version": "1.0.0",
-  "description": "The github action ",
-  "main": "out/action.js",
+  "description": "This action returns the amount of commits made since the last release",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc && ncc build -m",
     "format": "prettier --write '**/*.ts'",

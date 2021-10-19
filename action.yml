@@ -1,5 +1,5 @@
-name: "Markdown action: create indexes"
-description: "Creates indexes pages for a markdown styled wiki"
+name: "Ccommit Amount since Last Release"
+description: "This action returns the amount of commits made since the last release"
 branding:
   icon: activity
   color: green
