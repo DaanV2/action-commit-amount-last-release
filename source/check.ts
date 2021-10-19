@@ -35,8 +35,8 @@ export class Checker {
           const commit_date = commit.commit.author.date;
 
           if (commit_date) {
-            console.log(`${commit.sha}=${commit_date}`);
             const commit_date_value = Date.parse(date);
+            console.log(`${commit.sha}=${commit_date_value}`);
 
             if (commit_date_value < date_value) {
               core.setOutput("amount", I);
