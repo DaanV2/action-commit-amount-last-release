@@ -11,6 +11,10 @@ export class Checker {
     this.octokit = github.getOctokit(this.token, {});
   }
 
+  /**
+   * 
+   * @returns 
+   */
   check(): Promise<void> {
     console.log("grabbing repo information");
     const latestRelease = this.octokit.rest.repos.getLatestRelease(github.context.repo);
@@ -20,6 +24,7 @@ export class Checker {
       core.setFailed(err.message);
     })
 
+    //If latest release has been received
     return latestRelease.then(repo_response => {
       const tag = repo_response.data.tag_name
       const date = repo_response.data.published_at;
@@ -27,6 +32,7 @@ export class Checker {
 
       console.log(`looking up for tag: ${tag}`);
 
+      //Create request for commits before this date
       const request = {
         owner: github.context.repo.owner,
         repo: github.context.repo.repo,
@@ -34,6 +40,7 @@ export class Checker {
         per_page: 100
       }
 
+      //The request for all commits
       return this.octokit.rest.repos.listCommits(request).then(commit_response => {
         console.log("reading commits");
 
@@ -45,7 +52,7 @@ export class Checker {
             const commit_date_value = Date.parse(commit_date);
 
             if (commit_date_value < date_value) {
-              core.setOutput("amount", I);
+              return core.setOutput("amount", I);
             }
           }
         }
