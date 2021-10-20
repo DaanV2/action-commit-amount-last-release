@@ -23,6 +23,7 @@ jobs:
         uses: EndBug/latest-tag@latest
         
       - name: Update
+        continue-on-error: true
         run: |
           git add .
           git commit -m "Updated"
